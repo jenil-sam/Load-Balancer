@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Load Balancer Design Document</title>
+  <style>
+    :root {
+      --maroon: #500000;
+      --gold: #C5A100;
+      --bg: #0f0f14;
+      --surface: #1a1a24;
+      --surface2: #22222f;
+      --text: #e2e2e8;
+      --muted: #9090a8;
+      --green: #4ade80;
+      --cyan: #22d3ee;
+      --yellow: #fbbf24;
+      --magenta: #e879f9;
+      --red: #f87171;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, var(--maroon) 0%, #2a0000 100%);
+      border-bottom: 3px solid var(--gold);
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .logo-block { display: flex; flex-direction: column; }
+    .logo-block .brand { font-size: 0.85rem; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; }
+    .logo-block h1 { font-size: 2rem; font-weight: 700; color: #fff; }
+    .logo-block .sub { color: #ccc; font-size: 0.9rem; margin-top: 0.25rem; }
+    .tamu-badge {
+      margin-left: auto;
+      background: var(--gold);
+      color: var(--maroon);
+      font-weight: 800;
+      font-size: 1.4rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── LAYOUT ── */
+    main { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
+    section { margin-bottom: 3.5rem; }
+    h2 {
+      font-size: 1.4rem;
+      color: var(--gold);
+      border-left: 4px solid var(--gold);
+      padding-left: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    h3 { color: var(--cyan); font-size: 1.05rem; margin: 1.25rem 0 0.5rem; }
+    p { color: var(--text); margin-bottom: 0.75rem; }
+
+    /* ── CARDS ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      border-top: 3px solid var(--gold);
+    }
+    .card .card-title { font-weight: 700; color: var(--gold); font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .card ul { list-style: none; }
+    .card ul li::before { content: "▸ "; color: var(--cyan); }
+    .card ul li { font-size: 0.88rem; color: var(--muted); }
+
+    /* ── FLOW DIAGRAM ── */
+    .flow {
+      background: var(--surface);
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 2rem;
+      overflow-x: auto;
+    }
+    .flow-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .box {
+      background: var(--surface2);
+      border: 2px solid;
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-align: center;
+      min-width: 130px;
+    }
+    .box.req    { border-color: var(--cyan);    color: var(--cyan); }
+    .box.lb     { border-color: var(--gold);    color: var(--gold); }
+    .box.srv    { border-color: var(--green);   color: var(--green); }
+    .box.fw     { border-color: var(--red);     color: var(--red); }
+    .box.sw     { border-color: var(--magenta); color: var(--magenta); }
+    .box.scale  { border-color: var(--yellow);  color: var(--yellow); }
+    .arrow { color: var(--muted); font-size: 1.3rem; }
+    .arrow-down { text-align: center; color: var(--muted); font-size: 1.3rem; margin-bottom: 0.75rem; }
+    .srv-row { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+
+    /* ── UML TABLE ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 0.75rem;
+    }
+    th {
+      background: var(--maroon);
+      color: var(--gold);
+      padding: 0.6rem 1rem;
+      text-align: left;
+    }
+    td {
+      padding: 0.55rem 1rem;
+      border-bottom: 1px solid #2a2a3a;
+      color: var(--muted);
+    }
+    tr:hover td { background: var(--surface); color: var(--text); }
+    code {
+      background: #1a1a2e;
+      color: var(--cyan);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.85em;
+    }
+
+    /* ── ALGORITHM BOX ── */
+    .algo {
+      background: #0d1117;
+      border: 1px solid #333;
+      border-left: 4px solid var(--cyan);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      font-family: monospace;
+      font-size: 0.83rem;
+      color: #b0d8f0;
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+    .kw { color: var(--magenta); }
+    .cmt { color: #5c7a5c; }
+    .num { color: var(--yellow); }
+
+    /* ── FEATURE BADGES ── */
+    .badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .badge {
+      padding: 0.2rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1px solid;
+    }
+    .badge.green  { color: var(--green);   border-color: var(--green);   }
+    .badge.cyan   { color: var(--cyan);    border-color: var(--cyan);    }
+    .badge.yellow { color: var(--yellow);  border-color: var(--yellow);  }
+    .badge.mag    { color: var(--magenta); border-color: var(--magenta); }
+    .badge.red    { color: var(--red);     border-color: var(--red);     }
+
+    footer {
+      border-top: 2px solid var(--maroon);
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-block">
+    <span class="brand">Texas A&amp;M University · CSCE 221</span>
+    <h1>Load Balancer Simulation</h1>
+    <span class="sub">Design Document &amp; Architecture Guide</span>
+  </div>
+  <div class="tamu-badge">TAMU</div>
+</header>
+
+<main>
+
+  <!-- OVERVIEW -->
+  <section>
+    <h2>Project Overview</h2>
+    <p>This project simulates a production-grade load balancer that distributes incoming web requests across a dynamic pool of web servers. The system models real-world behaviors including auto-scaling, IP-based firewall protection, job type routing, and detailed activity logging.</p>
+    <div class="badges">
+      <span class="badge green">Auto-Scaling</span>
+      <span class="badge cyan">IP Firewall</span>
+      <span class="badge yellow">Config File</span>
+      <span class="badge mag">Switch Router (Bonus)</span>
+      <span class="badge red">DOS Prevention</span>
+      <span class="badge cyan">Colored Output</span>
+    </div>
+  </section>
+
+  <!-- FLOW DIAGRAM -->
+  <section>
+    <h2>System Flow Diagram</h2>
+    <div class="flow">
+      <div class="flow-row">
+        <div class="box req">Incoming Requests<br><small>Random IPs &amp; Times</small></div>
+      </div>
+      <div class="arrow-down">▼</div>
+      <div class="flow-row">
+        <div class="box fw">🔥 IP Firewall<br><small>Block Ranges</small></div>
+        <span class="arrow">→</span>
+        <div class="box sw">Switch (Optional)<br><small>Route by Type P/S</small></div>
+      </div>
+      <div class="arrow-down">▼ &nbsp; ▼</div>
+      <div class="flow-row">
+        <div class="box lb">Load Balancer<br><small>Queue + Scheduler</small></div>
+      </div>
+      <div class="arrow-down">▼</div>
+      <div class="flow-row">
+        <div class="box scale">⚖ Auto-Scaler<br><small>queue &lt; 50n → remove<br>queue &gt; 80n → add</small></div>
+      </div>
+      <div class="arrow-down">▼</div>
+      <div class="flow-row srv-row">
+        <div class="box srv">Server #1</div>
+        <div class="box srv">Server #2</div>
+        <div class="box srv">Server #3</div>
+        <div class="box srv">Server #N</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLASS ARCHITECTURE -->
+  <section>
+    <h2>Class Architecture (UML Summary)</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">struct Request</div>
+        <ul>
+          <li>ipIn : string</li>
+          <li>ipOut : string</li>
+          <li>time : int</li>
+          <li>jobType : char (P/S)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">class RequestQueue</div>
+        <ul>
+          <li>queue&lt;Request&gt;</li>
+          <li>blockedRanges : vector</li>
+          <li>enqueue(req) → bool</li>
+          <li>dequeue() → Request</li>
+          <li>blockIPRange(prefix)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">class WebServer</div>
+        <ul>
+          <li>id : int</li>
+          <li>idle : bool</li>
+          <li>remainingTime : int</li>
+          <li>completedCount : int</li>
+          <li>assignRequest(req)</li>
+          <li>tick() → bool</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">class LoadBalancer</div>
+        <ul>
+          <li>servers : vector&lt;WebServer&gt;</li>
+          <li>queue : RequestQueue</li>
+          <li>run() — main loop</li>
+          <li>autoScale()</li>
+          <li>distributeRequests()</li>
+          <li>populateInitialQueue(n)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">class Switch (Bonus)</div>
+        <ul>
+          <li>processingLB : LoadBalancer</li>
+          <li>streamingLB : LoadBalancer</li>
+          <li>routeRequest(req)</li>
+          <li>populateAndRoute(n)</li>
+          <li>run() — runs both LBs</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">class Config</div>
+        <ul>
+          <li>servers, cycles</li>
+          <li>minQueue, maxQueue</li>
+          <li>scaleWait, newReqInterval</li>
+          <li>blockedIPs : vector</li>
+          <li>load(filename) → bool</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILE STRUCTURE -->
+  <section>
+    <h2>File Structure</h2>
+    <table>
+      <tr><th>File</th><th>Purpose</th></tr>
+      <tr><td><code>Request.h</code></td><td>Struct holding all fields for a single web request</td></tr>
+      <tr><td><code>RequestQueue.h/cpp</code></td><td>FIFO queue with IP firewall filtering</td></tr>
+      <tr><td><code>WebServer.h/cpp</code></td><td>Single server simulation with tick-based processing</td></tr>
+      <tr><td><code>LoadBalancer.h/cpp</code></td><td>Core balancer: queue management, auto-scaling, logging</td></tr>
+      <tr><td><code>Switch.h/cpp</code></td><td>Bonus: routes P/S jobs to dedicated LoadBalancer instances</td></tr>
+      <tr><td><code>Config.h</code></td><td>Config file parser for key=value settings</td></tr>
+      <tr><td><code>main.cpp</code></td><td>Driver: reads config, creates balancer, runs simulation</td></tr>
+      <tr><td><code>loadbalancer.conf</code></td><td>Configuration file (no recompile needed to change settings)</td></tr>
+      <tr><td><code>Makefile</code></td><td>Build system: <code>make</code>, <code>make run</code>, <code>make docs</code></td></tr>
+      <tr><td><code>Doxyfile</code></td><td>Doxygen configuration for HTML documentation generation</td></tr>
+    </table>
+  </section>
+
+  <!-- AUTO-SCALING ALGORITHM -->
+  <section>
+    <h2>Auto-Scaling Algorithm</h2>
+    <div class="algo"><span class="cmt">// Called every clock cycle, but throttled by scaleWait</span>
+<span class="kw">function</span> autoScale():
+  <span class="kw">if</span> (currentCycle - lastScaleCycle) &lt; scaleWait:
+    <span class="kw">return</span>   <span class="cmt">// too soon — wait before scaling again</span>
+
+  n = servers.size()
+  q = queue.size()
+
+  <span class="kw">if</span> q &gt; maxQueue * n:            <span class="cmt">// e.g., queue &gt; 80 * n</span>
+    addServer()                    <span class="cmt">// SCALE UP</span>
+    lastScaleCycle = currentCycle
+
+  <span class="kw">else if</span> q &lt; minQueue * n AND n &gt; <span class="num">1</span>:  <span class="cmt">// e.g., queue &lt; 50 * n</span>
+    removeIdleServer()             <span class="cmt">// SCALE DOWN</span>
+    lastScaleCycle = currentCycle</div>
+  </section>
+
+  <!-- CLOCK CYCLE LOOP -->
+  <section>
+    <h2>Per-Cycle Simulation Loop</h2>
+    <div class="algo"><span class="kw">for</span> cycle = <span class="num">1</span> to totalCycles:
+
+  <span class="cmt">// 1. Inject new requests periodically</span>
+  <span class="kw">if</span> cycle % newReqInterval == <span class="num">0</span>:
+    injectRandomRequests(<span class="num">1</span>..<span class="num">5</span>)  <span class="cmt">// filtered by IP firewall</span>
+
+  <span class="cmt">// 2. Assign queue requests to idle servers</span>
+  distributeRequests()
+
+  <span class="cmt">// 3. Advance all servers by one clock tick</span>
+  tickAllServers()             <span class="cmt">// servers that finish increment completedCount</span>
+
+  <span class="cmt">// 4. Check if scaling is needed</span>
+  autoScale()
+
+  <span class="cmt">// 5. Log status every 500 cycles</span>
+  <span class="kw">if</span> cycle % <span class="num">500</span> == <span class="num">0</span>:
+    logStatus()</div>
+  </section>
+
+  <!-- CONFIGURATION -->
+  <section>
+    <h2>Configuration Parameters</h2>
+    <table>
+      <tr><th>Key</th><th>Default</th><th>Description</th></tr>
+      <tr><td><code>servers</code></td><td>10</td><td>Initial number of web servers</td></tr>
+      <tr><td><code>cycles</code></td><td>10000</td><td>Total simulation clock cycles</td></tr>
+      <tr><td><code>min_queue</code></td><td>50</td><td>Min queue per server — remove a server below this</td></tr>
+      <tr><td><code>max_queue</code></td><td>80</td><td>Max queue per server — add a server above this</td></tr>
+      <tr><td><code>scale_wait</code></td><td>100</td><td>Minimum cycles between scaling actions</td></tr>
+      <tr><td><code>new_req_interval</code></td><td>10</td><td>Inject new requests every N cycles</td></tr>
+      <tr><td><code>use_switch</code></td><td>0</td><td>Enable Switch routing by job type (0 or 1)</td></tr>
+      <tr><td><code>log_file</code></td><td>simulation.log</td><td>Output log file path</td></tr>
+      <tr><td><code>block_ip</code></td><td>(none)</td><td>IP prefix to block — add multiple lines</td></tr>
+    </table>
+  </section>
+
+  <!-- OUTPUT COLORS -->
+  <section>
+    <h2>Colored Terminal Output Legend</h2>
+    <div class="card-grid">
+      <div class="card" style="border-top-color: var(--cyan);">
+        <div class="card-title" style="color:var(--cyan);">CYAN — Status</div>
+        <ul><li>Periodic status updates every 500 cycles</li><li>Initialization messages</li></ul>
+      </div>
+      <div class="card" style="border-top-color: var(--green);">
+        <div class="card-title" style="color:var(--green);">GREEN — Scale Up</div>
+        <ul><li>Server added to pool</li><li>Queue exceeding maximum threshold</li></ul>
+      </div>
+      <div class="card" style="border-top-color: var(--magenta);">
+        <div class="card-title" style="color:var(--magenta);">MAGENTA — Scale Down</div>
+        <ul><li>Idle server removed</li><li>Queue below minimum threshold</li></ul>
+      </div>
+      <div class="card" style="border-top-color: var(--yellow);">
+        <div class="card-title" style="color:var(--yellow);">YELLOW — Firewall</div>
+        <ul><li>IP range blocked</li><li>DOS prevention events</li></ul>
+      </div>
+      <div class="card" style="border-top-color: var(--red);">
+        <div class="card-title" style="color:var(--red);">RED — Errors</div>
+        <ul><li>Log file open failures</li><li>Configuration errors</li></ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Texas A&amp;M University · CSCE 221 · Load Balancer Simulation · 2025
+</footer>
+
+</body>
+</html>

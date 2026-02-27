@@ -1,0 +1,56 @@
+[INIT] MainLB populated queue with 1000 requests (0 blocked). Queue size: 1000
+
+============================================================
+  MainLB -- Starting simulation
+  Servers: 10  Duration: 10000 cycles
+  Queue thresholds: [50*n, 80*n]
+============================================================
+[32m[SCALE+] MainLB Cycle 100: Added server #11. Total servers: 11. Queue: 934[0m
+[STATUS] MainLB Cycle    500 | Queue:   645 | Servers:  11 | Served so far: 506
+[SCALE-] MainLB Cycle 718: Removed idle server #11. Total servers: 10. Queue: 487
+[SCALE-] MainLB Cycle 818: Removed idle server #8. Total servers: 9. Queue: 421
+[SCALE-] MainLB Cycle 918: Removed idle server #1. Total servers: 8. Queue: 377
+[STATUS] MainLB Cycle   1000 | Queue:   353 | Servers:   8 | Served so far: 963
+[SCALE-] MainLB Cycle 1018: Removed idle server #9. Total servers: 7. Queue: 346
+[SCALE-] MainLB Cycle 1118: Removed idle server #4. Total servers: 6. Queue: 306
+[SCALE-] MainLB Cycle 1318: Removed idle server #3. Total servers: 5. Queue: 238
+[SCALE-] MainLB Cycle 1418: Removed idle server #7. Total servers: 4. Queue: 225
+[STATUS] MainLB Cycle   1500 | Queue:   221 | Servers:   4 | Served so far: 1233
+[STATUS] MainLB Cycle   2000 | Queue:   193 | Servers:   4 | Served so far: 1427
+[SCALE-] MainLB Cycle 2463: Removed idle server #10. Total servers: 3. Queue: 139
+[STATUS] MainLB Cycle   2500 | Queue:   139 | Servers:   3 | Served so far: 1619
+[SCALE-] MainLB Cycle 2563: Removed idle server #2. Total servers: 2. Queue: 136
+[32m[SCALE+] MainLB Cycle 2840: Added server #3. Total servers: 3. Queue: 161[0m
+[STATUS] MainLB Cycle   3000 | Queue:   173 | Servers:   3 | Served so far: 1746
+[STATUS] MainLB Cycle   3500 | Queue:   173 | Servers:   3 | Served so far: 1882
+[STATUS] MainLB Cycle   4000 | Queue:   168 | Servers:   3 | Served so far: 2026
+[STATUS] MainLB Cycle   4500 | Queue:   177 | Servers:   3 | Served so far: 2173
+[STATUS] MainLB Cycle   5000 | Queue:   164 | Servers:   3 | Served so far: 2325
+[STATUS] MainLB Cycle   5500 | Queue:   165 | Servers:   3 | Served so far: 2464
+[STATUS] MainLB Cycle   6000 | Queue:   156 | Servers:   3 | Served so far: 2613
+[STATUS] MainLB Cycle   6500 | Queue:   153 | Servers:   3 | Served so far: 2763
+[STATUS] MainLB Cycle   7000 | Queue:   157 | Servers:   3 | Served so far: 2902
+[SCALE-] MainLB Cycle 7229: Removed idle server #5. Total servers: 2. Queue: 149
+[32m[SCALE+] MainLB Cycle 7329: Added server #3. Total servers: 3. Queue: 161[0m
+[STATUS] MainLB Cycle   7500 | Queue:   176 | Servers:   3 | Served so far: 3039
+[STATUS] MainLB Cycle   8000 | Queue:   178 | Servers:   3 | Served so far: 3184
+[STATUS] MainLB Cycle   8500 | Queue:   188 | Servers:   3 | Served so far: 3319
+[STATUS] MainLB Cycle   9000 | Queue:   186 | Servers:   3 | Served so far: 3466
+[STATUS] MainLB Cycle   9500 | Queue:   193 | Servers:   3 | Served so far: 3607
+[STATUS] MainLB Cycle  10000 | Queue:   186 | Servers:   3 | Served so far: 3759
+
+============================================================
+  SUMMARY: MainLB
+------------------------------------------------------------
+  Total clock cycles:       10000
+  Final server count:       3
+  Remaining queue depth:    186
+  Total requests added:     3948
+  Total requests served:    3759
+  Total requests blocked:   0
+------------------------------------------------------------
+  Per-server completions:
+    Server #6: 979 requests
+    Server #3: 666 requests
+    Server #3: 252 requests
+============================================================
