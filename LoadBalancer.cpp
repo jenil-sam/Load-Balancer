@@ -17,12 +17,13 @@
 LoadBalancer::LoadBalancer(const std::string& name, int numServers, int totalCycles,
                            const std::string& logFile,
                            int minQueue, int maxQueue,
-                           int scaleWait, int newReqInterval)
+                           int scaleWait, int newReqInterval, int minServers)
     : name_(name), totalCycles_(totalCycles), currentCycle_(0),
       minQueue_(minQueue), maxQueue_(maxQueue),
       scaleWait_(scaleWait), newReqInterval_(newReqInterval),
       lastScaleCycle_(0), totalRequestsServed_(0),
-      totalRequestsBlocked_(0), totalRequestsAdded_(0)
+      totalRequestsBlocked_(0), totalRequestsAdded_(0),
+      nextServerId_(numServers + 1), minServers_(minServers)
 {
     for (int i = 0; i < numServers; ++i) {
         servers_.emplace_back(i + 1);
@@ -107,14 +108,14 @@ void LoadBalancer::autoScale() {
     if (qSize > maxQueue_ * n) {
         addServer();
         lastScaleCycle_ = currentCycle_;
-    } else if (qSize < minQueue_ * n && n > 1) {
+    } else if (qSize < minQueue_ * n && n > minServers_) {
         removeServer();
         lastScaleCycle_ = currentCycle_;
     }
 }
 
 void LoadBalancer::addServer() {
-    int newId = static_cast<int>(servers_.size()) + 1;
+    int newId = nextServerId_++;
     servers_.emplace_back(newId);
     std::ostringstream ss;
     ss << Color::GREEN << "[SCALE+] " << name_ << " Cycle " << currentCycle_

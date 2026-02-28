@@ -6,7 +6,41 @@
  * creates the LoadBalancer or Switch, populates the initial queue,
  * runs the simulation, and produces a summary log.
  *
- * @author Load Balancer Project
+ * @author Jenil Sam
+ * @date 2025
+ */
+
+/**
+ * @mainpage Load Balancer Simulation
+ *
+ * @section overview Overview
+ * This project simulates a production-grade load balancer that distributes
+ * incoming web requests across a dynamic pool of web servers.
+ *
+ * @section features Features
+ * - Auto-scaling based on queue depth thresholds (50*n and 80*n)
+ * - IP-based firewall / DOS prevention
+ * - Config file support (no recompile needed)
+ * - Colored terminal output
+ * - Detailed simulation log
+ * - Bonus: Switch routing by job type (Processing vs Streaming)
+ *
+ * @section usage How to Run
+ * @code
+ * make
+ * ./loadbalancer
+ * @endcode
+ *
+ * @section files File Structure
+ * - main.cpp — Driver program
+ * - LoadBalancer.h/cpp — Core balancer with auto-scaling
+ * - WebServer.h/cpp — Individual server simulation
+ * - RequestQueue.h/cpp — FIFO queue with firewall filtering
+ * - Request.h — Request data structure
+ * - Switch.h/cpp — Bonus job-type router
+ * - Config.h — Config file parser
+ *
+ * @author Jenil Sam
  * @date 2025
  */
 
@@ -58,9 +92,7 @@ int main(int argc, char* argv[]) {
     srand(static_cast<unsigned>(time(nullptr)));
 
     std::cout << Color::BOLD << Color::CYAN
-              << "╔══════════════════════════════════════╗\n"
-              << "║   TAMU Load Balancer Simulation      ║\n"
-              << "╚══════════════════════════════════════╝\n"
+              << "---------Load Balancer--------- \n"
               << Color::RESET << "\n";
 
     // Load configuration
@@ -72,36 +104,28 @@ int main(int argc, char* argv[]) {
     }
     cfg.print();
 
-    // Initial queue size = servers * 100
+    //queue size
     int initialQueueSize = cfg.servers * 100;
 
     if (cfg.useSwitch) {
-        // Bonus: route by job type
         int procServers   = cfg.servers / 2 > 0 ? cfg.servers / 2 : 1;
         int streamServers = cfg.servers - procServers;
         Switch sw(procServers, streamServers, cfg.cycles, "switch");
-        // (IP blocking via Switch not yet wired in this path)
         for ([[maybe_unused]] const auto& ip : cfg.blockedIPs) {
-            // Apply blocks via populate (Switch manages two LBs internally)
         }
         sw.populateAndRoute(initialQueueSize);
         sw.run();
     } else {
-        // Single load balancer
         LoadBalancer lb("MainLB", cfg.servers, cfg.cycles, cfg.logFile,
                         cfg.minQueue, cfg.maxQueue,
                         cfg.scaleWait, cfg.newReqInterval);
 
-        // Apply firewall rules
-        // (IP blocking via Switch not yet wired in this path)
         for ([[maybe_unused]] const auto& ip : cfg.blockedIPs) {
             lb.blockIPRange(ip);
         }
-
-        // Populate initial queue
+        //initial queue
         lb.populateInitialQueue(initialQueueSize);
 
-        // Run simulation
         lb.run();
     }
 

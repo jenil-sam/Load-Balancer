@@ -61,10 +61,10 @@ void Switch::populateAndRoute(int total) {
 
 void Switch::run() {
     std::cout << Color::BOLD
-              << "\n[SWITCH] Running ProcessingLB...\n" << Color::RESET;
+              << "\n-SWITCH- Running ProcessingLB...\n" << Color::RESET;
     processingLB_.run();
 
     std::cout << Color::BOLD
-              << "\n[SWITCH] Running StreamingLB...\n" << Color::RESET;
+              << "\n-SWITCH- Running StreamingLB...\n" << Color::RESET;
     streamingLB_.run();
 }

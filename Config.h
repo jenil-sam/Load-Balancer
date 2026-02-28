@@ -36,7 +36,8 @@
 /**
  * @brief Reads and stores configuration parameters from a key=value file.
  */
-class Config {
+class Config
+{
 public:
     /**
      * @brief Constructs Config with default values.
@@ -44,35 +45,41 @@ public:
     Config()
         : servers(10), cycles(10000), minQueue(50), maxQueue(80),
           scaleWait(100), newReqInterval(10), useSwitch(false),
-          logFile("simulation.log") {}
+          logFile("simulation.log"), minServers(2) {}
 
-    int servers;               
-    int cycles;               
-    int minQueue;             
-    int maxQueue;              
-    int scaleWait;            
-    int newReqInterval;        
-    bool useSwitch;           
-    std::string logFile;      
-    std::vector<std::string> blockedIPs; 
+    int servers;
+    int cycles;
+    int minQueue;
+    int maxQueue;
+    int scaleWait;
+    int newReqInterval;
+    bool useSwitch;
+    int minServers;
+    std::string logFile;
+    std::vector<std::string> blockedIPs;
 
     /**
      * @brief Loads configuration from a file. Missing keys use defaults.
      * @param filename Path to the configuration file.
      * @return true if file was opened and read; false if file not found.
      */
-    bool load(const std::string& filename) {
+    bool load(const std::string &filename)
+    {
         std::ifstream f(filename);
-        if (!f.is_open()) {
+        if (!f.is_open())
+        {
             std::cerr << "Config file not found: " << filename
                       << " -- using defaults.\n";
             return false;
         }
         std::string line;
-        while (std::getline(f, line)) {
-            if (line.empty() || line[0] == '#') continue;
+        while (std::getline(f, line))
+        {
+            if (line.empty() || line[0] == '#')
+                continue;
             auto pos = line.find('=');
-            if (pos == std::string::npos) continue;
+            if (pos == std::string::npos)
+                continue;
             std::string key = line.substr(0, pos);
             std::string val = line.substr(pos + 1);
             // Trim whitespace
@@ -81,15 +88,24 @@ public:
             val.erase(0, val.find_first_not_of(" \t"));
             val.erase(val.find_last_not_of(" \t") + 1);
 
-            if (key == "servers")           servers = std::stoi(val);
-            else if (key == "cycles")       cycles = std::stoi(val);
-            else if (key == "min_queue")    minQueue = std::stoi(val);
-            else if (key == "max_queue")    maxQueue = std::stoi(val);
-            else if (key == "scale_wait")   scaleWait = std::stoi(val);
-            else if (key == "new_req_interval") newReqInterval = std::stoi(val);
-            else if (key == "use_switch")   useSwitch = (val == "1" || val == "true");
-            else if (key == "log_file")     logFile = val;
-            else if (key == "block_ip")     blockedIPs.push_back(val);
+            if (key == "servers")
+                servers = std::stoi(val);
+            else if (key == "cycles")
+                cycles = std::stoi(val);
+            else if (key == "min_queue")
+                minQueue = std::stoi(val);
+            else if (key == "max_queue")
+                maxQueue = std::stoi(val);
+            else if (key == "scale_wait")
+                scaleWait = std::stoi(val);
+            else if (key == "new_req_interval")
+                newReqInterval = std::stoi(val);
+            else if (key == "use_switch")
+                useSwitch = (val == "1" || val == "true");
+            else if (key == "log_file")
+                logFile = val;
+            else if (key == "block_ip")
+                blockedIPs.push_back(val);
         }
         return true;
     }
@@ -97,7 +113,8 @@ public:
     /**
      * @brief Prints current configuration values to stdout.
      */
-    void print() const {
+    void print() const
+    {
         std::cout << "=== Configuration ===\n"
                   << "  servers         = " << servers << "\n"
                   << "  cycles          = " << cycles << "\n"
@@ -107,7 +124,7 @@ public:
                   << "  new_req_interval= " << newReqInterval << "\n"
                   << "  use_switch      = " << useSwitch << "\n"
                   << "  log_file        = " << logFile << "\n";
-        for (const auto& ip : blockedIPs)
+        for (const auto &ip : blockedIPs)
             std::cout << "  block_ip        = " << ip << "\n";
         std::cout << "=====================\n\n";
     }

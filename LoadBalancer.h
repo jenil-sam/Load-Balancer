@@ -53,11 +53,12 @@ public:
      * @param maxQueue     Maximum queue threshold per server (default 80).
      * @param scaleWait    Clock cycles to wait between scaling actions (default 100).
      * @param newReqInterval Cycles between injecting new random requests (default 10).
+     * @param minServers   Minimum number of servers to keep running (default 2).
      */
     LoadBalancer(const std::string& name, int numServers, int totalCycles,
-                 const std::string& logFile,
-                 int minQueue = 50, int maxQueue = 80,
-                 int scaleWait = 100, int newReqInterval = 10);
+             const std::string& logFile,
+             int minQueue = 50, int maxQueue = 80,
+             int scaleWait = 100, int newReqInterval = 10, int minServers = 2);
 
     /**
      * @brief Destructor - closes log file.
@@ -87,21 +88,23 @@ public:
     void printSummary();
 
 private:
-    std::string name_;          ///< Name of this load balancer
-    int totalCycles_;           ///< Total simulation clock cycles
-    int currentCycle_;          ///< Current clock cycle number
-    int minQueue_;              ///< Queue min threshold per server
-    int maxQueue_;              ///< Queue max threshold per server
-    int scaleWait_;             ///< Wait cycles between scaling events
-    int newReqInterval_;        ///< Cycles between new request injections
-    int lastScaleCycle_;        ///< Last cycle a scale event occurred
-    int totalRequestsServed_;   ///< Total requests completed across all servers
-    int totalRequestsBlocked_;  ///< Total requests blocked by firewall
-    int totalRequestsAdded_;    ///< Total requests injected during simulation
+    std::string name_;         
+    int totalCycles_;           
+    int currentCycle_;          //curr clock cycle number
+    int minQueue_;            
+    int maxQueue_;              //Queue max threshold per server
+    int scaleWait_;             //Wait cycles between scaling events
+    int newReqInterval_;        
+    int lastScaleCycle_;        
+    int totalRequestsServed_;   //Total requests completed across all servers
+    int totalRequestsBlocked_;  //Total requests blocked by firewall
+    int totalRequestsAdded_;    //Total requests injected during simulation
+    int nextServerId_;          //server id to avoid duplication
+    int minServers_;            //min number of servers
 
-    std::vector<WebServer> servers_;  ///< Active web server pool
-    RequestQueue queue_;              ///< The request queue
-    std::ofstream logStream_;         ///< Log file output stream
+    std::vector<WebServer> servers_;  //web server pool
+    RequestQueue queue_;              //request queue
+    std::ofstream logStream_;         //Log file output
 
     /**
      * @brief Generates a random IPv4 address string.
