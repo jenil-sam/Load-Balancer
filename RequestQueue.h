@@ -2,7 +2,7 @@
  * @file RequestQueue.h
  * @brief Declares the RequestQueue class, a queue of web Requests with firewall filtering.
  *
- * Wraps std::queue<Request> and adds IP range blocking for DOS/firewall protection.
+ * Wraps queue<Request> and adds IP range blocking for DOS/firewall protection.
  *
  * @author Jenil Sam
  * @date 2025
@@ -15,6 +15,7 @@
 #include <vector>
 #include <string>
 #include "Request.h"
+using namespace std;
 
 /**
  * @brief A queue of Request objects with built-in IP firewall functionality.
@@ -58,24 +59,24 @@ public:
      * @brief Adds an IP prefix to the blocklist (e.g., "192.168." blocks all 192.168.x.x).
      * @param ipPrefix The IP prefix string to block.
      */
-    void blockIPRange(const std::string& ipPrefix);
+    void blockIPRange(const string& ipPrefix);
 
     /**
      * @brief Returns the list of currently blocked IP prefixes.
      * @return Reference to the vector of blocked IP prefixes.
      */
-    const std::vector<std::string>& getBlockedRanges() const;
+    const vector<string>& getBlockedRanges() const;
 
 private:
-    std::queue<Request> requests_;         ///< Underlying FIFO queue
-    std::vector<std::string> blockedRanges_; ///< Blocked IP prefixes
+    queue<Request> requests_;         ///< Underlying FIFO queue
+    vector<string> blockedRanges_; ///< Blocked IP prefixes
 
     /**
      * @brief Checks if an IP address matches any blocked range.
      * @param ip The IP address to check.
      * @return true if the IP is blocked, false otherwise.
      */
-    bool isBlocked(const std::string& ip) const;
+    bool isBlocked(const string& ip) const;
 };
 
 #endif // REQUESTQUEUE_H

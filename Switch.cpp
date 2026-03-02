@@ -11,23 +11,25 @@
 #include <sstream>
 #include <iostream>
 
+using namespace std;
+
 Switch::Switch(int procServers, int streamServers, int cycles,
-               const std::string& logPrefix)
+               const string& logPrefix)
     : processingLB_("ProcessingLB", procServers, cycles, logPrefix + "_processing.log"),
       streamingLB_("StreamingLB", streamServers, cycles, logPrefix + "_streaming.log"),
       routedToProcessing_(0), routedToStreaming_(0)
 {}
 
-std::string Switch::randomIP() const {
-    std::ostringstream ss;
+string Switch::randomIP() const {
+    ostringstream ss;
     ss << (rand() % 256) << "." << (rand() % 256) << "."
        << (rand() % 256) << "." << (rand() % 256);
     return ss.str();
 }
 
 Request Switch::generateRequest() const {
-    std::string in  = randomIP();
-    std::string out = randomIP();
+    string in  = randomIP();
+    string out = randomIP();
     int t = 1 + rand() % 20;
     char type = (rand() % 2 == 0) ? 'P' : 'S';
     return Request(in, out, t, type);
@@ -51,20 +53,20 @@ void Switch::populateAndRoute(int total) {
     routedToProcessing_ += forProcessing;
     routedToStreaming_   += forStreaming;
 
-    std::cout << Color::CYAN
+    cout << Color::CYAN
               << "[SWITCH] Routed " << forProcessing << " processing jobs -> ProcessingLB"
               << Color::RESET << "\n";
-    std::cout << Color::CYAN
+    cout << Color::CYAN
               << "[SWITCH] Routed " << forStreaming << " streaming jobs  -> StreamingLB"
               << Color::RESET << "\n";
 }
 
 void Switch::run() {
-    std::cout << Color::BOLD
+    cout << Color::BOLD
               << "\n-SWITCH- Running ProcessingLB...\n" << Color::RESET;
     processingLB_.run();
 
-    std::cout << Color::BOLD
+    cout << Color::BOLD
               << "\n-SWITCH- Running StreamingLB...\n" << Color::RESET;
     streamingLB_.run();
 }

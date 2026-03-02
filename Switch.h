@@ -56,10 +56,10 @@ public:
     void run();
 
 private:
-    LoadBalancer processingLB_; // Load balancer for processing jobs
-    LoadBalancer streamingLB_;  // Load balancer for streaming jobs
-    int routedToProcessing_;    // Number requests to processing LB
-    int routedToStreaming_;     // NUmebr requests to streaming LB
+    LoadBalancer processingLB_; ///< Load balancer dedicated to processing jobs
+    LoadBalancer streamingLB_;  ///< Load balancer dedicated to streaming jobs
+    int routedToProcessing_;    ///< Count of requests routed to processing LB
+    int routedToStreaming_;     ///< Count of requests routed to streaming LB
 
     /**
      * @brief Generates a random IPv4 address.

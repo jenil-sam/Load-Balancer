@@ -110,22 +110,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a740fb2303eb31d5339d0f9cab7ce011e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of requests currently in the queue.  <br /></td></tr>
 <tr class="memitem:aebed8312d94713f7808ce9992bbe402b" id="r_aebed8312d94713f7808ce9992bbe402b"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aebed8312d94713f7808ce9992bbe402b">empty</a> () const</td></tr>
 <tr class="memdesc:aebed8312d94713f7808ce9992bbe402b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the queue is empty.  <br /></td></tr>
-<tr class="memitem:ae4cc1a3e31818ccb10da5809101892fd" id="r_ae4cc1a3e31818ccb10da5809101892fd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae4cc1a3e31818ccb10da5809101892fd">blockIPRange</a> (const std::string &amp;ipPrefix)</td></tr>
-<tr class="memdesc:ae4cc1a3e31818ccb10da5809101892fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an IP prefix to the blocklist (e.g., "192.168." blocks all 192.168.x.x).  <br /></td></tr>
-<tr class="memitem:a3a3a91ec4c66b59fa51ad672e97087dd" id="r_a3a3a91ec4c66b59fa51ad672e97087dd"><td class="memItemLeft">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a3a3a91ec4c66b59fa51ad672e97087dd">getBlockedRanges</a> () const</td></tr>
+<tr class="memitem:aebb7ce6c948ed55ac62e6c35a6dcc067" id="r_aebb7ce6c948ed55ac62e6c35a6dcc067"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aebb7ce6c948ed55ac62e6c35a6dcc067">blockIPRange</a> (const string &amp;ipPrefix)</td></tr>
+<tr class="memdesc:aebb7ce6c948ed55ac62e6c35a6dcc067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an IP prefix to the blocklist (e.g., "192.168." blocks all 192.168.x.x).  <br /></td></tr>
+<tr class="memitem:a3a3a91ec4c66b59fa51ad672e97087dd" id="r_a3a3a91ec4c66b59fa51ad672e97087dd"><td class="memItemLeft">const vector&lt; string &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a3a3a91ec4c66b59fa51ad672e97087dd">getBlockedRanges</a> () const</td></tr>
 <tr class="memdesc:a3a3a91ec4c66b59fa51ad672e97087dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the list of currently blocked IP prefixes.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:ad633a73f90392fd81ca0c97efe540536" id="r_ad633a73f90392fd81ca0c97efe540536"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ad633a73f90392fd81ca0c97efe540536">isBlocked</a> (const std::string &amp;ip) const</td></tr>
-<tr class="memdesc:ad633a73f90392fd81ca0c97efe540536"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an IP address matches any blocked range.  <br /></td></tr>
+<tr class="memitem:a4253ac652703c50889fdcd23a848f87e" id="r_a4253ac652703c50889fdcd23a848f87e"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a4253ac652703c50889fdcd23a848f87e">isBlocked</a> (const string &amp;ip) const</td></tr>
+<tr class="memdesc:a4253ac652703c50889fdcd23a848f87e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an IP address matches any blocked range.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a1a5b53a113ae2ee30df66206bfaaa206" id="r_a1a5b53a113ae2ee30df66206bfaaa206"><td class="memItemLeft">std::queue&lt; <a class="el" href="struct_request.html">Request</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a1a5b53a113ae2ee30df66206bfaaa206">requests_</a></td></tr>
-<tr class="memdesc:a1a5b53a113ae2ee30df66206bfaaa206"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying FIFO queue.  <br /></td></tr>
-<tr class="memitem:a153d718ea32daaedec7ff6d867452c96" id="r_a153d718ea32daaedec7ff6d867452c96"><td class="memItemLeft">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a153d718ea32daaedec7ff6d867452c96">blockedRanges_</a></td></tr>
-<tr class="memdesc:a153d718ea32daaedec7ff6d867452c96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blocked IP prefixes.  <br /></td></tr>
+<tr class="memitem:a6df31958554bdd914834956398034907" id="r_a6df31958554bdd914834956398034907"><td class="memItemLeft">queue&lt; <a class="el" href="struct_request.html">Request</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a6df31958554bdd914834956398034907">requests_</a></td></tr>
+<tr class="memdesc:a6df31958554bdd914834956398034907"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying FIFO queue.  <br /></td></tr>
+<tr class="memitem:ad4f95c759e34ee9b4cf1c18ff43ba0f5" id="r_ad4f95c759e34ee9b4cf1c18ff43ba0f5"><td class="memItemLeft">vector&lt; string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ad4f95c759e34ee9b4cf1c18ff43ba0f5">blockedRanges_</a></td></tr>
+<tr class="memdesc:ad4f95c759e34ee9b4cf1c18ff43ba0f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blocked IP prefixes.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A queue of <a class="el" href="struct_request.html" title="Represents a single web request in the load balancer system.">Request</a> objects with built-in IP firewall functionality. </p>
@@ -151,8 +151,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="ae4cc1a3e31818ccb10da5809101892fd" name="ae4cc1a3e31818ccb10da5809101892fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4cc1a3e31818ccb10da5809101892fd">&#9670;&#160;</a></span>blockIPRange()</h2>
+<a id="aebb7ce6c948ed55ac62e6c35a6dcc067" name="aebb7ce6c948ed55ac62e6c35a6dcc067"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebb7ce6c948ed55ac62e6c35a6dcc067">&#9670;&#160;</a></span>blockIPRange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -160,7 +160,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void RequestQueue::blockIPRange </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>ipPrefix</em></span></td><td>)</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>ipPrefix</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -262,8 +262,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad633a73f90392fd81ca0c97efe540536" name="ad633a73f90392fd81ca0c97efe540536"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad633a73f90392fd81ca0c97efe540536">&#9670;&#160;</a></span>isBlocked()</h2>
+<a id="a4253ac652703c50889fdcd23a848f87e" name="a4253ac652703c50889fdcd23a848f87e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4253ac652703c50889fdcd23a848f87e">&#9670;&#160;</a></span>isBlocked()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -274,7 +274,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">bool RequestQueue::isBlocked </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>ip</em></span></td><td>)</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>ip</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -317,8 +317,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
-<a id="a153d718ea32daaedec7ff6d867452c96" name="a153d718ea32daaedec7ff6d867452c96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a153d718ea32daaedec7ff6d867452c96">&#9670;&#160;</a></span>blockedRanges_</h2>
+<a id="ad4f95c759e34ee9b4cf1c18ff43ba0f5" name="ad4f95c759e34ee9b4cf1c18ff43ba0f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4f95c759e34ee9b4cf1c18ff43ba0f5">&#9670;&#160;</a></span>blockedRanges_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -327,7 +327,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::string&gt; RequestQueue::blockedRanges_</td>
+          <td class="memname">vector&lt;string&gt; RequestQueue::blockedRanges_</td>
         </tr>
       </table>
   </td>
@@ -341,8 +341,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a1a5b53a113ae2ee30df66206bfaaa206" name="a1a5b53a113ae2ee30df66206bfaaa206"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a5b53a113ae2ee30df66206bfaaa206">&#9670;&#160;</a></span>requests_</h2>
+<a id="a6df31958554bdd914834956398034907" name="a6df31958554bdd914834956398034907"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6df31958554bdd914834956398034907">&#9670;&#160;</a></span>requests_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -351,7 +351,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::queue&lt;<a class="el" href="struct_request.html">Request</a>&gt; RequestQueue::requests_</td>
+          <td class="memname">queue&lt;<a class="el" href="struct_request.html">Request</a>&gt; RequestQueue::requests_</td>
         </tr>
       </table>
   </td>

@@ -67,11 +67,11 @@ public:
     const Request& getCurrentRequest() const;
 
 private:
-    int id_;                    
-    bool idle_;                 
-    int remainingTime_;         
-    int completedCount_;        
-    Request currentRequest_;   
+    int id_;                 ///< Unique identifier for this server
+    bool idle_;              ///< True if server is idle, false if processing
+    int remainingTime_;      ///< Remaining clock cycles for current request
+    int completedCount_;     ///< Total number of requests completed
+    Request currentRequest_; ///< The request currently being processed
 };
 
 #endif // WEBSERVER_H

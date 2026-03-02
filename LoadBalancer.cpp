@@ -35,7 +35,7 @@ LoadBalancer::LoadBalancer(const std::string &name, int numServers, int totalCyc
     logStream_.open(logFile);
     if (!logStream_.is_open())
     {
-        std::cerr << Color::RED << "[ERROR] Cannot open log file: " << logFile << Color::RESET << "\n";
+        std::cerr << Color::RED << "[ERROR] cannot open log file: " << logFile << Color::RESET << "\n";
     }
 }
 
@@ -189,17 +189,15 @@ void LoadBalancer::run()
     for (currentCycle_ = 1; currentCycle_ <= totalCycles_; ++currentCycle_)
     {
 
-        // Inject new requests periodically
+        // Add new requests periodically
         if (currentCycle_ % newReqInterval_ == 0)
         {
             int newCount = 1 + rand() % 5;
-            int blocked = 0;
             for (int i = 0; i < newCount; ++i)
             {
                 Request r = generateRequest();
                 if (!queue_.enqueue(r))
                 {
-                    blocked++;
                     totalRequestsBlocked_++;
                 }
                 else
