@@ -9,27 +9,27 @@
  * @author Jenil Sam
  * @date 2025
  */
-
 #ifndef LOADBALANCER_H
 #define LOADBALANCER_H
-
 #include "WebServer.h"
 #include "RequestQueue.h"
 #include <vector>
 #include <string>
 #include <fstream>
 
+using namespace std;
+
 /**
  * @brief ANSI color codes for terminal output.
  */
 namespace Color {
-    constexpr const char* RESET   = "\033[0m";
-    constexpr const char* RED     = "\033[31m";
-    constexpr const char* GREEN   = "\033[32m";
-    constexpr const char* YELLOW  = "\033[33m";
-    constexpr const char* CYAN    = "\033[36m";
-    constexpr const char* MAGENTA = "\033[35m";
-    constexpr const char* BOLD    = "\033[1m";
+    constexpr const char* RESET   = "\033[0m";  ///< Reset all attributes
+    constexpr const char* RED     = "\033[31m"; ///< Red color for errors
+    constexpr const char* GREEN   = "\033[32m"; ///< Green color for scale-up events
+    constexpr const char* YELLOW  = "\033[33m"; ///< Yellow color for firewall events
+    constexpr const char* CYAN    = "\033[36m"; ///< Cyan color for status messages
+    constexpr const char* MAGENTA = "\033[35m"; ///< Magenta color for scale-down events
+    constexpr const char* BOLD    = "\033[1m";  ///< Bold text for headers and summaries
 }
 
 /**
@@ -45,20 +45,20 @@ class LoadBalancer {
 public:
     /**
      * @brief Constructs a LoadBalancer.
-     * @param name         Identifier for this load balancer instance.
-     * @param numServers   Initial number of web servers.
-     * @param totalCycles  Total simulation time in clock cycles.
-     * @param logFile      Path to the output log file.
-     * @param minQueue     Minimum queue threshold per server (default 50).
-     * @param maxQueue     Maximum queue threshold per server (default 80).
-     * @param scaleWait    Clock cycles to wait between scaling actions (default 100).
+     * @param name           Identifier for this load balancer instance.
+     * @param numServers     Initial number of web servers.
+     * @param totalCycles    Total simulation time in clock cycles.
+     * @param logFile        Path to the output log file.
+     * @param minQueue       Minimum queue threshold per server (default 50).
+     * @param maxQueue       Maximum queue threshold per server (default 80).
+     * @param scaleWait      Clock cycles to wait between scaling actions (default 100).
      * @param newReqInterval Cycles between injecting new random requests (default 10).
-     * @param minServers   Minimum number of servers to keep running (default 2).
+     * @param minServers     Minimum number of servers to keep running (default 2).
      */
-    LoadBalancer(const std::string& name, int numServers, int totalCycles,
-             const std::string& logFile,
-             int minQueue = 50, int maxQueue = 80,
-             int scaleWait = 100, int newReqInterval = 10, int minServers = 2);
+    LoadBalancer(const string& name, int numServers, int totalCycles,
+                 const string& logFile,
+                 int minQueue = 50, int maxQueue = 80,
+                 int scaleWait = 100, int newReqInterval = 10, int minServers = 2);
 
     /**
      * @brief Destructor - closes log file.
@@ -74,7 +74,7 @@ public:
      * @brief Adds a blocked IP prefix to the firewall.
      * @param prefix IP prefix to block (e.g., "10.0.").
      */
-    void blockIPRange(const std::string& prefix);
+    void blockIPRange(const string& prefix);
 
     /**
      * @brief Pre-fills the request queue with an initial batch of random requests.
@@ -88,29 +88,34 @@ public:
     void printSummary();
 
 private:
-    std::string name_;         
-    int totalCycles_;           
-    int currentCycle_;          //curr clock cycle number
-    int minQueue_;            
-    int maxQueue_;              //Queue max threshold per server
-    int scaleWait_;             //Wait cycles between scaling events
-    int newReqInterval_;        
-    int lastScaleCycle_;        
-    int totalRequestsServed_;   //Total requests completed across all servers
-    int totalRequestsBlocked_;  //Total requests blocked by firewall
-    int totalRequestsAdded_;    //Total requests injected during simulation
-    int nextServerId_;          //server id to avoid duplication
-    int minServers_;            //min number of servers
+    string name_;          ///< Name of this load balancer
+    int totalCycles_;           ///< Total simulation clock cycles
+    int currentCycle_;          ///< Current clock cycle number
+    int minQueue_;              ///< Queue min threshold per server
+    int maxQueue_;              ///< Queue max threshold per server
+    int scaleWait_;             ///< Wait cycles between scaling events
+    int newReqInterval_;        ///< Cycles between new request injections
+    int lastScaleCycle_;        ///< Last cycle a scale event occurred
+    int totalRequestsServed_;   ///< Total requests completed across all servers
+    int totalRequestsBlocked_;  ///< Total requests blocked by firewall
+    int totalRequestsAdded_;    ///< Total requests injected during simulation
+    int nextServerId_;          ///< Next server ID to assign (avoids duplicate IDs)
+    int minServers_;            ///< Minimum number of servers to keep running
+    int scaleUpCount_;          ///< Total number of scale-up events
+    int scaleDownCount_;        ///< Total number of scale-down events
+    int minTaskTime_;           ///< Minimum task processing time in cycles
+    int maxTaskTime_;           ///< Maximum task processing time in cycles
+    int initialServers_;        ///< Initial number of servers at simulation start
 
-    std::vector<WebServer> servers_;  //web server pool
-    RequestQueue queue_;              //request queue
-    std::ofstream logStream_;         //Log file output
+    vector<WebServer> servers_;  ///< Active web server pool
+    RequestQueue queue_;              ///< The request queue
+    ofstream logStream_;         ///< Log file output stream
 
     /**
      * @brief Generates a random IPv4 address string.
      * @return Random IP address as a string.
      */
-    std::string randomIP() const;
+    string randomIP() const;
 
     /**
      * @brief Generates a random Request with random IPs, time, and job type.
@@ -142,7 +147,7 @@ private:
     void addServer();
 
     /**
-     * @brief Removes one idle WebServer from the pool (if more than 1 exists).
+     * @brief Removes one idle WebServer from the pool (if more than minServers_ exists).
      */
     void removeServer();
 
@@ -151,7 +156,7 @@ private:
      * @param color ANSI color code string.
      * @param msg   Message to log.
      */
-    void log(const char* color, const std::string& msg);
+    void log(const char* color, const string& msg);
 };
 
 #endif // LOADBALANCER_H

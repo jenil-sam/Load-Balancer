@@ -9,6 +9,8 @@
 #include "RequestQueue.h"
 #include <algorithm>
 
+using namespace std;
+
 RequestQueue::RequestQueue() {}
 
 bool RequestQueue::enqueue(const Request& req) {
@@ -33,15 +35,15 @@ bool RequestQueue::empty() const {
     return requests_.empty();
 }
 
-void RequestQueue::blockIPRange(const std::string& ipPrefix) {
+void RequestQueue::blockIPRange(const string& ipPrefix) {
     blockedRanges_.push_back(ipPrefix);
 }
 
-const std::vector<std::string>& RequestQueue::getBlockedRanges() const {
+const vector<string>& RequestQueue::getBlockedRanges() const {
     return blockedRanges_;
 }
 
-bool RequestQueue::isBlocked(const std::string& ip) const {
+bool RequestQueue::isBlocked(const string& ip) const {
     for (const auto& prefix : blockedRanges_) {
         if (ip.substr(0, prefix.size()) == prefix) {
             return true;

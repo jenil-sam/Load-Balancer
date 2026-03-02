@@ -100,14 +100,14 @@ $(function(){initNavTree('class_load_balancer.html','','class_load_balancer-memb
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac363ede08eee3c89b5d78f994eb5f817" id="r_ac363ede08eee3c89b5d78f994eb5f817"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ac363ede08eee3c89b5d78f994eb5f817">LoadBalancer</a> (const std::string &amp;name, int numServers, int totalCycles, const std::string &amp;logFile, int minQueue=50, int maxQueue=80, int scaleWait=100, int newReqInterval=10, int minServers=2)</td></tr>
-<tr class="memdesc:ac363ede08eee3c89b5d78f994eb5f817"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_load_balancer.html" title="Manages web servers and request distribution with auto-scaling.">LoadBalancer</a>.  <br /></td></tr>
+<tr class="memitem:aa584b8408d8e447e79d208713d977040" id="r_aa584b8408d8e447e79d208713d977040"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aa584b8408d8e447e79d208713d977040">LoadBalancer</a> (const string &amp;name, int numServers, int totalCycles, const string &amp;logFile, int minQueue=50, int maxQueue=80, int scaleWait=100, int newReqInterval=10, int minServers=2)</td></tr>
+<tr class="memdesc:aa584b8408d8e447e79d208713d977040"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_load_balancer.html" title="Manages web servers and request distribution with auto-scaling.">LoadBalancer</a>.  <br /></td></tr>
 <tr class="memitem:a69951a7bb77be7fafd4d5ad6919abd80" id="r_a69951a7bb77be7fafd4d5ad6919abd80"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a69951a7bb77be7fafd4d5ad6919abd80">~LoadBalancer</a> ()</td></tr>
 <tr class="memdesc:a69951a7bb77be7fafd4d5ad6919abd80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor - closes log file.  <br /></td></tr>
 <tr class="memitem:a528909054cb20964cba1fb35ceb9003f" id="r_a528909054cb20964cba1fb35ceb9003f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a528909054cb20964cba1fb35ceb9003f">run</a> ()</td></tr>
 <tr class="memdesc:a528909054cb20964cba1fb35ceb9003f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the full simulation for totalCycles_ clock cycles.  <br /></td></tr>
-<tr class="memitem:a612723313491b18e1e1620b4d9803e2c" id="r_a612723313491b18e1e1620b4d9803e2c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a612723313491b18e1e1620b4d9803e2c">blockIPRange</a> (const std::string &amp;prefix)</td></tr>
-<tr class="memdesc:a612723313491b18e1e1620b4d9803e2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a blocked IP prefix to the firewall.  <br /></td></tr>
+<tr class="memitem:a812f1546c8e2a1a8c892fe4d952bb873" id="r_a812f1546c8e2a1a8c892fe4d952bb873"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a812f1546c8e2a1a8c892fe4d952bb873">blockIPRange</a> (const string &amp;prefix)</td></tr>
+<tr class="memdesc:a812f1546c8e2a1a8c892fe4d952bb873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a blocked IP prefix to the firewall.  <br /></td></tr>
 <tr class="memitem:ab7a1aec240abe28f71a01bf2d9231934" id="r_ab7a1aec240abe28f71a01bf2d9231934"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab7a1aec240abe28f71a01bf2d9231934">populateInitialQueue</a> (int count)</td></tr>
 <tr class="memdesc:ab7a1aec240abe28f71a01bf2d9231934"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-fills the request queue with an initial batch of random requests.  <br /></td></tr>
 <tr class="memitem:ad6c4fa3a9c734c18687bf58532d881cb" id="r_ad6c4fa3a9c734c18687bf58532d881cb"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ad6c4fa3a9c734c18687bf58532d881cb">printSummary</a> ()</td></tr>
@@ -115,7 +115,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:ab6980623271bd486022007cc6fc2a39a" id="r_ab6980623271bd486022007cc6fc2a39a"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#ab6980623271bd486022007cc6fc2a39a">randomIP</a> () const</td></tr>
+<tr class="memitem:ab6980623271bd486022007cc6fc2a39a" id="r_ab6980623271bd486022007cc6fc2a39a"><td class="memItemLeft">string&#160;</td><td class="memItemRight"><a class="el" href="#ab6980623271bd486022007cc6fc2a39a">randomIP</a> () const</td></tr>
 <tr class="memdesc:ab6980623271bd486022007cc6fc2a39a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a random IPv4 address string.  <br /></td></tr>
 <tr class="memitem:a02ab1758e70bde3fa869d6de5839387d" id="r_a02ab1758e70bde3fa869d6de5839387d"><td class="memItemLeft"><a class="el" href="struct_request.html">Request</a>&#160;</td><td class="memItemRight"><a class="el" href="#a02ab1758e70bde3fa869d6de5839387d">generateRequest</a> (int minTime=1, int maxTime=20) const</td></tr>
 <tr class="memdesc:a02ab1758e70bde3fa869d6de5839387d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a random <a class="el" href="struct_request.html" title="Represents a single web request in the load balancer system.">Request</a> with random IPs, time, and job type.  <br /></td></tr>
@@ -128,28 +128,54 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a32f3f33a319622cf83b41cb9fcd09d3c" id="r_a32f3f33a319622cf83b41cb9fcd09d3c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a32f3f33a319622cf83b41cb9fcd09d3c">addServer</a> ()</td></tr>
 <tr class="memdesc:a32f3f33a319622cf83b41cb9fcd09d3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds one new <a class="el" href="class_web_server.html" title="Simulates a single web server that processes requests.">WebServer</a> to the pool.  <br /></td></tr>
 <tr class="memitem:a2f77281d168914e6bbe1857a0cd84d25" id="r_a2f77281d168914e6bbe1857a0cd84d25"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2f77281d168914e6bbe1857a0cd84d25">removeServer</a> ()</td></tr>
-<tr class="memdesc:a2f77281d168914e6bbe1857a0cd84d25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes one idle <a class="el" href="class_web_server.html" title="Simulates a single web server that processes requests.">WebServer</a> from the pool (if more than 1 exists).  <br /></td></tr>
-<tr class="memitem:aa9732b7ca12448f3adc4bf5276138f19" id="r_aa9732b7ca12448f3adc4bf5276138f19"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa9732b7ca12448f3adc4bf5276138f19">log</a> (const char *color, const std::string &amp;msg)</td></tr>
-<tr class="memdesc:aa9732b7ca12448f3adc4bf5276138f19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a colored log message to console and log file.  <br /></td></tr>
+<tr class="memdesc:a2f77281d168914e6bbe1857a0cd84d25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes one idle <a class="el" href="class_web_server.html" title="Simulates a single web server that processes requests.">WebServer</a> from the pool (if more than minServers_ exists).  <br /></td></tr>
+<tr class="memitem:a7c6f5df57855176f7f8a97016b6dd5c5" id="r_a7c6f5df57855176f7f8a97016b6dd5c5"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a7c6f5df57855176f7f8a97016b6dd5c5">log</a> (const char *color, const string &amp;msg)</td></tr>
+<tr class="memdesc:a7c6f5df57855176f7f8a97016b6dd5c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a colored log message to console and log file.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a1fe236933ff1e7dfee49ff66ca0e566d" id="r_a1fe236933ff1e7dfee49ff66ca0e566d"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#a1fe236933ff1e7dfee49ff66ca0e566d">name_</a></td></tr>
+<tr class="memitem:a459060ad3c8578e43c24606bce8de43c" id="r_a459060ad3c8578e43c24606bce8de43c"><td class="memItemLeft">string&#160;</td><td class="memItemRight"><a class="el" href="#a459060ad3c8578e43c24606bce8de43c">name_</a></td></tr>
+<tr class="memdesc:a459060ad3c8578e43c24606bce8de43c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of this load balancer.  <br /></td></tr>
 <tr class="memitem:a848dc341767bcf5fcd6060e5a34919af" id="r_a848dc341767bcf5fcd6060e5a34919af"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a848dc341767bcf5fcd6060e5a34919af">totalCycles_</a></td></tr>
+<tr class="memdesc:a848dc341767bcf5fcd6060e5a34919af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total simulation clock cycles.  <br /></td></tr>
 <tr class="memitem:aaddc0be98554cbf36c899f69ce1ea0eb" id="r_aaddc0be98554cbf36c899f69ce1ea0eb"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aaddc0be98554cbf36c899f69ce1ea0eb">currentCycle_</a></td></tr>
+<tr class="memdesc:aaddc0be98554cbf36c899f69ce1ea0eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current clock cycle number.  <br /></td></tr>
 <tr class="memitem:a748ff8fde4101185f16ad2cfdbe8430e" id="r_a748ff8fde4101185f16ad2cfdbe8430e"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a748ff8fde4101185f16ad2cfdbe8430e">minQueue_</a></td></tr>
+<tr class="memdesc:a748ff8fde4101185f16ad2cfdbe8430e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue min threshold per server.  <br /></td></tr>
 <tr class="memitem:a7d16a7e0e82a21cc245c356d1d17dde5" id="r_a7d16a7e0e82a21cc245c356d1d17dde5"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a7d16a7e0e82a21cc245c356d1d17dde5">maxQueue_</a></td></tr>
+<tr class="memdesc:a7d16a7e0e82a21cc245c356d1d17dde5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue max threshold per server.  <br /></td></tr>
 <tr class="memitem:a883a88eb13c16dbc76adbc3349eedec5" id="r_a883a88eb13c16dbc76adbc3349eedec5"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a883a88eb13c16dbc76adbc3349eedec5">scaleWait_</a></td></tr>
+<tr class="memdesc:a883a88eb13c16dbc76adbc3349eedec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait cycles between scaling events.  <br /></td></tr>
 <tr class="memitem:a64cc3457564fe0a7113db181cf21a4a3" id="r_a64cc3457564fe0a7113db181cf21a4a3"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a64cc3457564fe0a7113db181cf21a4a3">newReqInterval_</a></td></tr>
+<tr class="memdesc:a64cc3457564fe0a7113db181cf21a4a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cycles between new request injections.  <br /></td></tr>
 <tr class="memitem:af48ac9cc28f357875c35b637f371808d" id="r_af48ac9cc28f357875c35b637f371808d"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#af48ac9cc28f357875c35b637f371808d">lastScaleCycle_</a></td></tr>
+<tr class="memdesc:af48ac9cc28f357875c35b637f371808d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last cycle a scale event occurred.  <br /></td></tr>
 <tr class="memitem:a575bedba007c022602d7478c2cf6bdab" id="r_a575bedba007c022602d7478c2cf6bdab"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a575bedba007c022602d7478c2cf6bdab">totalRequestsServed_</a></td></tr>
+<tr class="memdesc:a575bedba007c022602d7478c2cf6bdab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total requests completed across all servers.  <br /></td></tr>
 <tr class="memitem:ab8602f20d6d50a694ec9003b70a482c1" id="r_ab8602f20d6d50a694ec9003b70a482c1"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ab8602f20d6d50a694ec9003b70a482c1">totalRequestsBlocked_</a></td></tr>
+<tr class="memdesc:ab8602f20d6d50a694ec9003b70a482c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total requests blocked by firewall.  <br /></td></tr>
 <tr class="memitem:af069f1e8faa419d2064078b34af82483" id="r_af069f1e8faa419d2064078b34af82483"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#af069f1e8faa419d2064078b34af82483">totalRequestsAdded_</a></td></tr>
+<tr class="memdesc:af069f1e8faa419d2064078b34af82483"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total requests injected during simulation.  <br /></td></tr>
 <tr class="memitem:a890e99a93c9e4d1f146fd19df8074ccd" id="r_a890e99a93c9e4d1f146fd19df8074ccd"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a890e99a93c9e4d1f146fd19df8074ccd">nextServerId_</a></td></tr>
+<tr class="memdesc:a890e99a93c9e4d1f146fd19df8074ccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Next server ID to assign (avoids duplicate IDs).  <br /></td></tr>
 <tr class="memitem:a14a622a0f89fe786aa236c9b91eadc0a" id="r_a14a622a0f89fe786aa236c9b91eadc0a"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a14a622a0f89fe786aa236c9b91eadc0a">minServers_</a></td></tr>
-<tr class="memitem:a9dad586466ca6fbfa438a51505b67646" id="r_a9dad586466ca6fbfa438a51505b67646"><td class="memItemLeft">std::vector&lt; <a class="el" href="class_web_server.html">WebServer</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a9dad586466ca6fbfa438a51505b67646">servers_</a></td></tr>
+<tr class="memdesc:a14a622a0f89fe786aa236c9b91eadc0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum number of servers to keep running.  <br /></td></tr>
+<tr class="memitem:a06f9aa0a253eebf72e3a4f96caf78cb7" id="r_a06f9aa0a253eebf72e3a4f96caf78cb7"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a06f9aa0a253eebf72e3a4f96caf78cb7">scaleUpCount_</a></td></tr>
+<tr class="memdesc:a06f9aa0a253eebf72e3a4f96caf78cb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of scale-up events.  <br /></td></tr>
+<tr class="memitem:a618614ee2cee42425164d1268bad19ee" id="r_a618614ee2cee42425164d1268bad19ee"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a618614ee2cee42425164d1268bad19ee">scaleDownCount_</a></td></tr>
+<tr class="memdesc:a618614ee2cee42425164d1268bad19ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of scale-down events.  <br /></td></tr>
+<tr class="memitem:a888d8221a0125fbe856fc30188eafa62" id="r_a888d8221a0125fbe856fc30188eafa62"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a888d8221a0125fbe856fc30188eafa62">minTaskTime_</a></td></tr>
+<tr class="memdesc:a888d8221a0125fbe856fc30188eafa62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum task processing time in cycles.  <br /></td></tr>
+<tr class="memitem:a1f7eac3da13a73396b473acef646b6dd" id="r_a1f7eac3da13a73396b473acef646b6dd"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a1f7eac3da13a73396b473acef646b6dd">maxTaskTime_</a></td></tr>
+<tr class="memdesc:a1f7eac3da13a73396b473acef646b6dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum task processing time in cycles.  <br /></td></tr>
+<tr class="memitem:a302063d878b4cf5d64908970c944d0df" id="r_a302063d878b4cf5d64908970c944d0df"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a302063d878b4cf5d64908970c944d0df">initialServers_</a></td></tr>
+<tr class="memdesc:a302063d878b4cf5d64908970c944d0df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initial number of servers at simulation start.  <br /></td></tr>
+<tr class="memitem:a0c5ae3748492729e3bc0672a9726241f" id="r_a0c5ae3748492729e3bc0672a9726241f"><td class="memItemLeft">vector&lt; <a class="el" href="class_web_server.html">WebServer</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a0c5ae3748492729e3bc0672a9726241f">servers_</a></td></tr>
+<tr class="memdesc:a0c5ae3748492729e3bc0672a9726241f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Active web server pool.  <br /></td></tr>
 <tr class="memitem:a816ed9e621a7c5ea20bc9db1d2509517" id="r_a816ed9e621a7c5ea20bc9db1d2509517"><td class="memItemLeft"><a class="el" href="class_request_queue.html">RequestQueue</a>&#160;</td><td class="memItemRight"><a class="el" href="#a816ed9e621a7c5ea20bc9db1d2509517">queue_</a></td></tr>
-<tr class="memitem:a9263963688fc538eeb6bcc03353bfa8c" id="r_a9263963688fc538eeb6bcc03353bfa8c"><td class="memItemLeft">std::ofstream&#160;</td><td class="memItemRight"><a class="el" href="#a9263963688fc538eeb6bcc03353bfa8c">logStream_</a></td></tr>
+<tr class="memdesc:a816ed9e621a7c5ea20bc9db1d2509517"><td class="mdescLeft">&#160;</td><td class="mdescRight">The request queue.  <br /></td></tr>
+<tr class="memitem:a86d408e6384289cc31caf03c6773defc" id="r_a86d408e6384289cc31caf03c6773defc"><td class="memItemLeft">ofstream&#160;</td><td class="memItemRight"><a class="el" href="#a86d408e6384289cc31caf03c6773defc">logStream_</a></td></tr>
+<tr class="memdesc:a86d408e6384289cc31caf03c6773defc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log file output stream.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages web servers and request distribution with auto-scaling. </p>
@@ -160,8 +186,8 @@ Private Attributes</h2></td></tr>
 <li>Logs all events to a log file with colored terminal output </li>
 </ul>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac363ede08eee3c89b5d78f994eb5f817" name="ac363ede08eee3c89b5d78f994eb5f817"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac363ede08eee3c89b5d78f994eb5f817">&#9670;&#160;</a></span>LoadBalancer()</h2>
+<a id="aa584b8408d8e447e79d208713d977040" name="aa584b8408d8e447e79d208713d977040"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa584b8408d8e447e79d208713d977040">&#9670;&#160;</a></span>LoadBalancer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -169,7 +195,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">LoadBalancer::LoadBalancer </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -184,7 +210,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>logFile</em></span>, </td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>logFile</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -306,8 +332,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a612723313491b18e1e1620b4d9803e2c" name="a612723313491b18e1e1620b4d9803e2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a612723313491b18e1e1620b4d9803e2c">&#9670;&#160;</a></span>blockIPRange()</h2>
+<a id="a812f1546c8e2a1a8c892fe4d952bb873" name="a812f1546c8e2a1a8c892fe4d952bb873"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a812f1546c8e2a1a8c892fe4d952bb873">&#9670;&#160;</a></span>blockIPRange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -315,7 +341,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void LoadBalancer::blockIPRange </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>prefix</em></span></td><td>)</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>prefix</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -397,8 +423,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa9732b7ca12448f3adc4bf5276138f19" name="aa9732b7ca12448f3adc4bf5276138f19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9732b7ca12448f3adc4bf5276138f19">&#9670;&#160;</a></span>log()</h2>
+<a id="a7c6f5df57855176f7f8a97016b6dd5c5" name="a7c6f5df57855176f7f8a97016b6dd5c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c6f5df57855176f7f8a97016b6dd5c5">&#9670;&#160;</a></span>log()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -414,7 +440,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>msg</em></span>&#160;)</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>msg</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -530,7 +556,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Removes one idle <a class="el" href="class_web_server.html" title="Simulates a single web server that processes requests.">WebServer</a> from the pool (if more than 1 exists). </p>
+<p>Removes one idle <a class="el" href="class_web_server.html" title="Simulates a single web server that processes requests.">WebServer</a> from the pool (if more than minServers_ exists). </p>
 
 </div>
 </div>
@@ -602,6 +628,32 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Current clock cycle number. </p>
+
+</div>
+</div>
+<a id="a302063d878b4cf5d64908970c944d0df" name="a302063d878b4cf5d64908970c944d0df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a302063d878b4cf5d64908970c944d0df">&#9670;&#160;</a></span>initialServers_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int LoadBalancer::initialServers_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initial number of servers at simulation start. </p>
+
 </div>
 </div>
 <a id="af48ac9cc28f357875c35b637f371808d" name="af48ac9cc28f357875c35b637f371808d"></a>
@@ -624,10 +676,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Last cycle a scale event occurred. </p>
+
 </div>
 </div>
-<a id="a9263963688fc538eeb6bcc03353bfa8c" name="a9263963688fc538eeb6bcc03353bfa8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9263963688fc538eeb6bcc03353bfa8c">&#9670;&#160;</a></span>logStream_</h2>
+<a id="a86d408e6384289cc31caf03c6773defc" name="a86d408e6384289cc31caf03c6773defc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86d408e6384289cc31caf03c6773defc">&#9670;&#160;</a></span>logStream_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -636,7 +690,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::ofstream LoadBalancer::logStream_</td>
+          <td class="memname">ofstream LoadBalancer::logStream_</td>
         </tr>
       </table>
   </td>
@@ -645,6 +699,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Log file output stream. </p>
 
 </div>
 </div>
@@ -668,6 +724,32 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Queue max threshold per server. </p>
+
+</div>
+</div>
+<a id="a1f7eac3da13a73396b473acef646b6dd" name="a1f7eac3da13a73396b473acef646b6dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f7eac3da13a73396b473acef646b6dd">&#9670;&#160;</a></span>maxTaskTime_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int LoadBalancer::maxTaskTime_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Maximum task processing time in cycles. </p>
+
 </div>
 </div>
 <a id="a748ff8fde4101185f16ad2cfdbe8430e" name="a748ff8fde4101185f16ad2cfdbe8430e"></a>
@@ -689,6 +771,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Queue min threshold per server. </p>
 
 </div>
 </div>
@@ -712,10 +796,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Minimum number of servers to keep running. </p>
+
 </div>
 </div>
-<a id="a1fe236933ff1e7dfee49ff66ca0e566d" name="a1fe236933ff1e7dfee49ff66ca0e566d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1fe236933ff1e7dfee49ff66ca0e566d">&#9670;&#160;</a></span>name_</h2>
+<a id="a888d8221a0125fbe856fc30188eafa62" name="a888d8221a0125fbe856fc30188eafa62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a888d8221a0125fbe856fc30188eafa62">&#9670;&#160;</a></span>minTaskTime_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -724,7 +810,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string LoadBalancer::name_</td>
+          <td class="memname">int LoadBalancer::minTaskTime_</td>
         </tr>
       </table>
   </td>
@@ -733,6 +819,32 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Minimum task processing time in cycles. </p>
+
+</div>
+</div>
+<a id="a459060ad3c8578e43c24606bce8de43c" name="a459060ad3c8578e43c24606bce8de43c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a459060ad3c8578e43c24606bce8de43c">&#9670;&#160;</a></span>name_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string LoadBalancer::name_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Name of this load balancer. </p>
 
 </div>
 </div>
@@ -756,6 +868,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Cycles between new request injections. </p>
+
 </div>
 </div>
 <a id="a890e99a93c9e4d1f146fd19df8074ccd" name="a890e99a93c9e4d1f146fd19df8074ccd"></a>
@@ -777,6 +891,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Next server ID to assign (avoids duplicate IDs). </p>
 
 </div>
 </div>
@@ -800,6 +916,56 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>The request queue. </p>
+
+</div>
+</div>
+<a id="a618614ee2cee42425164d1268bad19ee" name="a618614ee2cee42425164d1268bad19ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a618614ee2cee42425164d1268bad19ee">&#9670;&#160;</a></span>scaleDownCount_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int LoadBalancer::scaleDownCount_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Total number of scale-down events. </p>
+
+</div>
+</div>
+<a id="a06f9aa0a253eebf72e3a4f96caf78cb7" name="a06f9aa0a253eebf72e3a4f96caf78cb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06f9aa0a253eebf72e3a4f96caf78cb7">&#9670;&#160;</a></span>scaleUpCount_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int LoadBalancer::scaleUpCount_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Total number of scale-up events. </p>
+
 </div>
 </div>
 <a id="a883a88eb13c16dbc76adbc3349eedec5" name="a883a88eb13c16dbc76adbc3349eedec5"></a>
@@ -822,10 +988,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Wait cycles between scaling events. </p>
+
 </div>
 </div>
-<a id="a9dad586466ca6fbfa438a51505b67646" name="a9dad586466ca6fbfa438a51505b67646"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dad586466ca6fbfa438a51505b67646">&#9670;&#160;</a></span>servers_</h2>
+<a id="a0c5ae3748492729e3bc0672a9726241f" name="a0c5ae3748492729e3bc0672a9726241f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c5ae3748492729e3bc0672a9726241f">&#9670;&#160;</a></span>servers_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -834,7 +1002,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="class_web_server.html">WebServer</a>&gt; LoadBalancer::servers_</td>
+          <td class="memname">vector&lt;<a class="el" href="class_web_server.html">WebServer</a>&gt; LoadBalancer::servers_</td>
         </tr>
       </table>
   </td>
@@ -843,6 +1011,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Active web server pool. </p>
 
 </div>
 </div>
@@ -866,6 +1036,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Total simulation clock cycles. </p>
+
 </div>
 </div>
 <a id="af069f1e8faa419d2064078b34af82483" name="af069f1e8faa419d2064078b34af82483"></a>
@@ -887,6 +1059,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Total requests injected during simulation. </p>
 
 </div>
 </div>
@@ -910,6 +1084,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Total requests blocked by firewall. </p>
+
 </div>
 </div>
 <a id="a575bedba007c022602d7478c2cf6bdab" name="a575bedba007c022602d7478c2cf6bdab"></a>
@@ -931,6 +1107,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Total requests completed across all servers. </p>
 
 </div>
 </div>

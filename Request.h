@@ -14,6 +14,8 @@
 
 #include <string>
 
+using namespace std;
+
 /**
  * @brief Represents a single web request in the load balancer system.
  *
@@ -23,8 +25,8 @@
  * - Job type: 'P' for Processing, 'S' for Streaming
  */
 struct Request {
-    std::string ipIn;    ///< Source IP address of the request
-    std::string ipOut;   ///< Destination IP address for the response
+    string ipIn;    ///< Source IP address of the request
+    string ipOut;   ///< Destination IP address for the response
     int time;            ///< Processing time required (in clock cycles)
     char jobType;        ///< Job type: 'P' = Processing, 'S' = Streaming
 
@@ -40,7 +42,7 @@ struct Request {
      * @param t Processing time in clock cycles
      * @param type Job type character ('P' or 'S')
      */
-    Request(const std::string& in, const std::string& out, int t, char type)
+    Request(const string& in, const string& out, int t, char type)
         : ipIn(in), ipOut(out), time(t), jobType(type) {}
 };
 

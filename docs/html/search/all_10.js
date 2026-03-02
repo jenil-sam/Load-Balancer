@@ -4,7 +4,7 @@ var searchData=
   ['red_1',['RED',['../namespace_color.html#a12ba0e6199c2ef629ca3154598a1c6fb',1,'Color']]],
   ['remainingtime_5f_2',['remainingTime_',['../class_web_server.html#a0c809692294e6967985ec1bd221960c2',1,'WebServer']]],
   ['removeserver_3',['removeServer',['../class_load_balancer.html#a2f77281d168914e6bbe1857a0cd84d25',1,'LoadBalancer']]],
-  ['request_4',['Request',['../struct_request.html',1,'Request'],['../struct_request.html#afaf8d8928de7ffff8a3767589489bd33',1,'Request::Request()'],['../struct_request.html#a62d107f5f94175ba97f3eede4d678797',1,'Request::Request(const std::string &amp;in, const std::string &amp;out, int t, char type)']]],
+  ['request_4',['Request',['../struct_request.html',1,'Request'],['../struct_request.html#afaf8d8928de7ffff8a3767589489bd33',1,'Request::Request()'],['../struct_request.html#a63f5c571f24f824805adc508d6fca4bf',1,'Request::Request(const string &amp;in, const string &amp;out, int t, char type)']]],
   ['request_2eh_5',['Request.h',['../_request_8h.html',1,'']]],
   ['requestqueue_6',['RequestQueue',['../class_request_queue.html',1,'RequestQueue'],['../class_request_queue.html#aa9c18ac5654af41e64ded2d7001c24f5',1,'RequestQueue::RequestQueue()']]],
   ['requestqueue_2ecpp_7',['RequestQueue.cpp',['../_request_queue_8cpp.html',1,'']]],

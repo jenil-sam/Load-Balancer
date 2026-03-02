@@ -5,52 +5,56 @@
   Servers: 10  Duration: 10000 cycles
   Queue thresholds: [50*n, 80*n]
 ============================================================
-[32m[SCALE+] MainLB Cycle 100: Added server #11. Total servers: 11. Queue: 924[0m
-[STATUS] MainLB Cycle    500 | Queue:   606 | Servers:  11 | Served so far: 515
-[SCALE-] MainLB Cycle 577: Removed idle server #9. Total servers: 10. Queue: 549
-[SCALE-] MainLB Cycle 677: Removed idle server #8. Total servers: 9. Queue: 499
-[SCALE-] MainLB Cycle 777: Removed idle server #3. Total servers: 8. Queue: 435
-[SCALE-] MainLB Cycle 877: Removed idle server #4. Total servers: 7. Queue: 395
-[SCALE-] MainLB Cycle 979: Removed idle server #7. Total servers: 6. Queue: 349
-[STATUS] MainLB Cycle   1000 | Queue:   351 | Servers:   6 | Served so far: 935
-[SCALE-] MainLB Cycle 1205: Removed idle server #1. Total servers: 5. Queue: 299
-[STATUS] MainLB Cycle   1500 | Queue:   257 | Servers:   5 | Served so far: 1187
-[SCALE-] MainLB Cycle 1621: Removed idle server #10. Total servers: 4. Queue: 223
-[STATUS] MainLB Cycle   2000 | Queue:   190 | Servers:   4 | Served so far: 1398
-[SCALE-] MainLB Cycle 2007: Removed idle server #6. Total servers: 3. Queue: 188
-[STATUS] MainLB Cycle   2500 | Queue:   204 | Servers:   3 | Served so far: 1537
-[STATUS] MainLB Cycle   3000 | Queue:   214 | Servers:   3 | Served so far: 1685
-[STATUS] MainLB Cycle   3500 | Queue:   210 | Servers:   3 | Served so far: 1833
-[STATUS] MainLB Cycle   4000 | Queue:   227 | Servers:   3 | Served so far: 1976
-[32m[SCALE+] MainLB Cycle 4350: Added server #12. Total servers: 4. Queue: 241[0m
-[STATUS] MainLB Cycle   4500 | Queue:   222 | Servers:   4 | Served so far: 2129
-[STATUS] MainLB Cycle   5000 | Queue:   205 | Servers:   4 | Served so far: 2318
-[SCALE-] MainLB Cycle 5079: Removed idle server #12. Total servers: 3. Queue: 199
-[STATUS] MainLB Cycle   5500 | Queue:   207 | Servers:   3 | Served so far: 2475
-[STATUS] MainLB Cycle   6000 | Queue:   211 | Servers:   3 | Served so far: 2618
-[STATUS] MainLB Cycle   6500 | Queue:   222 | Servers:   3 | Served so far: 2751
-[STATUS] MainLB Cycle   7000 | Queue:   230 | Servers:   3 | Served so far: 2880
-[STATUS] MainLB Cycle   7500 | Queue:   232 | Servers:   3 | Served so far: 3034
-[32m[SCALE+] MainLB Cycle 7630: Added server #13. Total servers: 4. Queue: 241[0m
-[STATUS] MainLB Cycle   8000 | Queue:   212 | Servers:   4 | Served so far: 3217
-[SCALE-] MainLB Cycle 8136: Removed idle server #2. Total servers: 3. Queue: 199
-[STATUS] MainLB Cycle   8500 | Queue:   212 | Servers:   3 | Served so far: 3368
-[STATUS] MainLB Cycle   9000 | Queue:   210 | Servers:   3 | Served so far: 3523
-[STATUS] MainLB Cycle   9500 | Queue:   217 | Servers:   3 | Served so far: 3660
-[STATUS] MainLB Cycle  10000 | Queue:   239 | Servers:   3 | Served so far: 3799
+[32m[SCALE+] MainLB Cycle 100: Added server #11. Total servers: 11. Queue: 925[0m
+[STATUS] MainLB Cycle    500 | Queue:   622 | Servers:  11 | Served so far: 509
+[SCALE-] MainLB Cycle 598: Removed idle server #5. Total servers: 10. Queue: 547
+[SCALE-] MainLB Cycle 798: Removed idle server #11. Total servers: 9. Queue: 406
+[SCALE-] MainLB Cycle 998: Removed idle server #9. Total servers: 8. Queue: 289
+[STATUS] MainLB Cycle   1000 | Queue:   291 | Servers:   8 | Served so far: 982
+[SCALE-] MainLB Cycle 1098: Removed idle server #1. Total servers: 7. Queue: 247
+[STATUS] MainLB Cycle   1500 | Queue:   118 | Servers:   7 | Served so far: 1309
+[SCALE-] MainLB Cycle 1598: Removed idle server #10. Total servers: 6. Queue: 75
+[SCALE-] MainLB Cycle 1698: Removed idle server #3. Total servers: 5. Queue: 54
+[SCALE-] MainLB Cycle 1898: Removed idle server #7. Total servers: 4. Queue: 28
+[STATUS] MainLB Cycle   2000 | Queue:    22 | Servers:   4 | Served so far: 1557
+[SCALE-] MainLB Cycle 2098: Removed idle server #8. Total servers: 3. Queue: 11
+[STATUS] MainLB Cycle   2500 | Queue:    11 | Servers:   3 | Served so far: 1714
+[STATUS] MainLB Cycle   3000 | Queue:     5 | Servers:   3 | Served so far: 1860
+[SCALE-] MainLB Cycle 3198: Removed idle server #4. Total servers: 2. Queue: 0
+[STATUS] MainLB Cycle   3500 | Queue:    21 | Servers:   2 | Served so far: 1986
+[STATUS] MainLB Cycle   4000 | Queue:    69 | Servers:   2 | Served so far: 2085
+[STATUS] MainLB Cycle   4500 | Queue:   125 | Servers:   2 | Served so far: 2180
+[32m[SCALE+] MainLB Cycle 4960: Added server #12. Total servers: 3. Queue: 162[0m
+[STATUS] MainLB Cycle   5000 | Queue:   167 | Servers:   3 | Served so far: 2278
+[STATUS] MainLB Cycle   5500 | Queue:   173 | Servers:   3 | Served so far: 2407
+[STATUS] MainLB Cycle   6000 | Queue:   177 | Servers:   3 | Served so far: 2550
+[STATUS] MainLB Cycle   6500 | Queue:   170 | Servers:   3 | Served so far: 2701
+[STATUS] MainLB Cycle   7000 | Queue:   182 | Servers:   3 | Served so far: 2851
+[STATUS] MainLB Cycle   7500 | Queue:   181 | Servers:   3 | Served so far: 3000
+[STATUS] MainLB Cycle   8000 | Queue:   185 | Servers:   3 | Served so far: 3142
+[STATUS] MainLB Cycle   8500 | Queue:   213 | Servers:   3 | Served so far: 3278
+[STATUS] MainLB Cycle   9000 | Queue:   215 | Servers:   3 | Served so far: 3421
+[STATUS] MainLB Cycle   9500 | Queue:   225 | Servers:   3 | Served so far: 3563
+[STATUS] MainLB Cycle  10000 | Queue:   219 | Servers:   3 | Served so far: 3711
 
 ============================================================
   SUMMARY: MainLB
 ------------------------------------------------------------
   Total clock cycles:       10000
+  Initial server count:     10
   Final server count:       3
-  Remaining queue depth:    239
-  Total requests added:     4041
-  Total requests served:    3799
+  Starting queue depth:     1000
+  Remaining queue depth:    219
+  Task time range:          1 - 20 cycles
+  Total requests added:     3933
+  Total requests served:    3711
   Total requests blocked:   0
+  Scale-up events:          2
+  Scale-down events:        9
+  Throughput rate:          0.37 req/cycle
 ------------------------------------------------------------
   Per-server completions:
-    Server #5: 946 requests
-    Server #11: 932 requests
-    Server #13: 226 requests
+    Server #2: 959 requests
+    Server #6: 965 requests
+    Server #12: 475 requests
 ============================================================
